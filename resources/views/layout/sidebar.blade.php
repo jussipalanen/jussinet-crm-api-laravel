@@ -4,7 +4,7 @@
             <svg class="bi me-2" width="40" height="32">
                 <use xlink:href="#bootstrap"></use>
             </svg>
-            <span class="fs-4">Sidebar</span>
+            <span class="fs-4">JussiNet</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -67,7 +67,7 @@
                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/PLACEHOLDER.png" alt="" width="32" height="32"
                     class="rounded-circle me-2">
-                <strong>mdo</strong>
+                <strong>{{ Auth::user()->name }}</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>

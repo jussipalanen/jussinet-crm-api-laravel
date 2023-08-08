@@ -33,7 +33,9 @@ Route::get('/customers/edit', [ProductController::class, 'edit'])->middleware(Au
 // Products
 Route::get('/products', [ProductController::class, 'index'])->middleware(Authenticate::class);
 Route::get('/products/add', [ProductController::class, 'create'])->middleware(Authenticate::class);
-Route::get('/products/edit', [ProductController::class, 'edit'])->middleware(Authenticate::class);
+Route::post('/products/add', [ProductController::class, 'store'])->middleware(Authenticate::class);
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->middleware(Authenticate::class);
+Route::resource('products', ProductController::class)->middleware(Authenticate::class);
 
 // Profile/user
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(Authenticate::class);

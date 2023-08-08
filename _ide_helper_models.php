@@ -27,11 +27,12 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
- * @property string $description
- * @property string $image
+ * @property string|null $description
+ * @property string|null $featured_image
+ * @property string|null $gallery
  * @property float $regular_price
- * @property float $sale_price
- * @property float $weight
+ * @property float|null $sale_price
+ * @property float|null $weight
  * @property int $show
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -40,8 +41,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereFeaturedImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereGallery($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Product whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereRegularPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSalePrice($value)

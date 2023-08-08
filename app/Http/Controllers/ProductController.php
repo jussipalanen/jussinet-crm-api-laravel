@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.products.add');
     }
 
     /**
@@ -29,7 +29,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        # Check validation, or return the error messages
+        $request->validate([
+            'name' => ['required', 'max:255'],
+            'description' => ['required'],
+            'regular_price' => ['required'],
+            'featured_image' => ['nullable', 'max:2000', 'mimes:jpeg,jpg,png,gif'],
+        ]);
+
+        # Move the featured image to public resource directory
+        $featured_image = $request->file('featured_image')->storePublicly('products') ?: null;
+
+        Product::create([
+            'name' => $request->name ?: 'null',
+            'description' => $request->description ?: null,
+            'regular_price' => $request->regular_price ?: 0,
+            'sale_price' => $request->sale_price ?: null,
+            'featured_image' => $featured_image ?: null,
+            'weight' => $request->weight ?: null,
+            'show' => (bool) $request->show !== false ? true : false,
+        ]);
+
+        return redirect('/products/add')->with([
+            'success' => 'Product has been added successfully into the database.',
+        ]);
     }
 
     /**
@@ -43,9 +66,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(int $id)
     {
-        //
+        $product = Product::whereId($id)->firstOrFail();
+        return view('pages.products.add', ['product' => $product]);
     }
 
     /**
@@ -61,6 +85,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect('/products')->withSuccess(__('Product deleted successfully.'));
     }
 }
