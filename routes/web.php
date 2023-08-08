@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +24,20 @@ Route::get('/', [HomeController::class, 'index'])->middleware(Authenticate::clas
 Route::get('/docs', [HomeController::class, 'docs'])->middleware(Authenticate::class);
 Route::get('/about', [HomeController::class, 'about'])->middleware(Authenticate::class);
 Route::get('/donate', [HomeController::class, 'donate'])->middleware(Authenticate::class);
+
+// Customers
+Route::get('/customers', [CustomerController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/customers/add', [ProductController::class, 'create'])->middleware(Authenticate::class);
+Route::get('/customers/edit', [ProductController::class, 'edit'])->middleware(Authenticate::class);
+
+// Products
+Route::get('/products', [ProductController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/products/add', [ProductController::class, 'create'])->middleware(Authenticate::class);
+Route::get('/products/edit', [ProductController::class, 'edit'])->middleware(Authenticate::class);
+
+// Profile/user
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->middleware(Authenticate::class);
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('auth.getlogin');

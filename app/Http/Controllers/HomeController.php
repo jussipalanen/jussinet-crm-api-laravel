@@ -9,15 +9,27 @@ class HomeController extends Controller
         return view('pages.home');
     }
 
-    public function customers()
+    // public function customers()
+    // {
+    //     return view('pages.customers.list');
+    // }
+
+    // public function products()
+    // {
+    //     return view('pages.products.list');
+    // }
+
+    public function profile()
     {
-        return view('pages.customers');
+        return view('pages.profile.view');
     }
 
-    public function products()
+    public function profileEdit()
     {
-        return view('pages.products');
+        return view('pages.profile.edit');
     }
+
+
 
     public function about()
     {
