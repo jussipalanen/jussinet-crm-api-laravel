@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,22 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
+Route::get('/', [HomeController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/docs', [HomeController::class, 'docs'])->middleware(Authenticate::class);
+Route::get('/about', [HomeController::class, 'about'])->middleware(Authenticate::class);
+Route::get('/donate', [HomeController::class, 'donate'])->middleware(Authenticate::class);
 
-Route::get('/', function () {
-    return view('pages.index');
-});
-
-
-Route::get('/docs', function () {
-    return view('pages.docs');
-});
-
-
-Route::get('/about', function () {
-    return view('pages.aboutme');
-});
-
-
-Route::get('/donate', function () {
-    return view('pages.donate');
-});
+// Login
+Route::get('/login', [LoginController::class, 'index'])->name('auth.getlogin');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('auth.dologin');
+Route::get('/logout', [LoginController::class, 'logout'])->name('auth.dologout');
