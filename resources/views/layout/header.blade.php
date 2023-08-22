@@ -15,8 +15,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-
-
 </head>
 
 <body>

@@ -28,6 +28,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string|null $description
+ * @property int $product_category_id
  * @property string|null $featured_image
  * @property string|null $gallery
  * @property float $regular_price
@@ -36,6 +37,7 @@ namespace App\Models{
  * @property int $show
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $product_category
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -45,6 +47,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereGallery($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereProductCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereRegularPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSalePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereShow($value)
@@ -52,6 +55,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWeight($value)
  */
 	class Product extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ProductCategory
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCategory whereUpdatedAt($value)
+ */
+	class ProductCategory extends \Eloquent {}
 }
 
 namespace App\Models{

@@ -9,16 +9,6 @@ class HomeController extends Controller
         return view('pages.home');
     }
 
-    // public function customers()
-    // {
-    //     return view('pages.customers.list');
-    // }
-
-    // public function products()
-    // {
-    //     return view('pages.products.list');
-    // }
-
     public function profile()
     {
         return view('pages.profile.view');
@@ -28,8 +18,6 @@ class HomeController extends Controller
     {
         return view('pages.profile.edit');
     }
-
-
 
     public function about()
     {

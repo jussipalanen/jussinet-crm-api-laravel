@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable(true);
-            $table->integer('product_category')->unsigned()->index()->nullable();
-            $table->foreign('product_category')->references('id')->on('product_category')->onDelete('cascade');
+            $table->unsignedBigInteger('product_category_id');
+            $table->foreign('product_category_id')->references('id')->on('product_category')->onDelete('cascade');
             $table->string('featured_image')->nullable(true);
             $table->text('gallery')->nullable(true);
             $table->float('regular_price');

@@ -20,23 +20,30 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
+# User token API
 Route::get('/token', [AuthController::class, 'auth'])->name('token');
 Route::post('/token', [AuthController::class, 'auth'])->name('token');
 
+# Product API
 Route::get('/products', function()
 {
     return Product::all()->map(function( $product ){
         // Get the full url of the feature image
         $product->featured_image = url('/') . Storage::url( 'app/' . $product->featured_image );
-
-        // Test gallery with the feature image
-        $product->gallery = [
-            $product->featured_image,
-            $product->featured_image,
-            $product->featured_image,
-            $product->featured_image
-        ];
         return $product;
+    })->transform(function($product)
+    {
+        # Show only the specific fields
+        return $product->only([
+            'id', 
+            'name', 
+            'description',
+            'product_category',
+            'featured_image',
+            'regular_price',
+            'sale_price',
+            'weight',
+            'show'
+        ]);
     });
 })->middleware('auth:sanctum')->name('products');

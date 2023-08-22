@@ -17,7 +17,7 @@
                     Home
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a href="{{ url('/about') }}" class="nav-link {{ request()->is('about') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="{{ url('/about') }}"></use>
@@ -25,7 +25,7 @@
                     About
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a href="{{ url('/docs') }}" class="nav-link {{ request()->is('docs') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="{{ url('/docs') }}"></use>
@@ -33,7 +33,7 @@
                     Documentations
                 </a>
             </li>
-            <li>
+            <li class="nav-item">
                 <a href="{{ url('/donate') }}"
                     class="nav-link {{ request()->is('donate') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
@@ -42,7 +42,8 @@
                     Donate
                 </a>
             </li>
-            <li>
+
+            {{-- <li>
                 <a href="{{ url('/customers') }}"
                     class="nav-link {{ request()->is('customers') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
@@ -50,8 +51,8 @@
                     </svg>
                     Customers
                 </a>
-            </li>
-            <li>
+            </li> --}}
+            <li class="nav-item">
                 <a href="{{ url('/products') }}"
                     class="nav-link {{ request()->is('products') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
@@ -59,7 +60,14 @@
                     </svg>
                     Products
                 </a>
+
+                <ul class="submenu show text-small">
+                    <li class="nav-item"><a class="nav-link {{ request()->is('product_cats') ? 'active' : 'text-white' }}" href="{{ url('/product_cats') }}">Categories</a></li>
+                </ul>
+
             </li>
+
+            
         </ul>
         <hr>
         <div class="dropdown">

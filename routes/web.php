@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CustomerController;
+// use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Authenticate;
@@ -25,17 +26,21 @@ Route::get('/docs', [HomeController::class, 'docs'])->middleware(Authenticate::c
 Route::get('/about', [HomeController::class, 'about'])->middleware(Authenticate::class);
 Route::get('/donate', [HomeController::class, 'donate'])->middleware(Authenticate::class);
 
-// Customers
-Route::get('/customers', [CustomerController::class, 'index'])->middleware(Authenticate::class);
-Route::get('/customers/add', [ProductController::class, 'create'])->middleware(Authenticate::class);
-Route::get('/customers/edit', [ProductController::class, 'edit'])->middleware(Authenticate::class);
-
 // Products
 Route::get('/products', [ProductController::class, 'index'])->middleware(Authenticate::class);
 Route::get('/products/add', [ProductController::class, 'create'])->middleware(Authenticate::class);
 Route::post('/products/add', [ProductController::class, 'store'])->middleware(Authenticate::class);
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->middleware(Authenticate::class);
+Route::post('/products/edit/{id}', [ProductController::class, 'update'])->middleware(Authenticate::class);
 Route::resource('products', ProductController::class)->middleware(Authenticate::class);
+
+// Product categories
+Route::get('/product_cats', [ProductCategoryController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/product_cats/add', [ProductCategoryController::class, 'create'])->middleware(Authenticate::class);
+Route::post('/product_cats/add', [ProductCategoryController::class, 'store'])->middleware(Authenticate::class);
+Route::get('/product_cats/edit/{id}', [ProductCategoryController::class, 'edit'])->middleware(Authenticate::class);
+Route::post('/product_cats/edit/{id}', [ProductCategoryController::class, 'update'])->middleware(Authenticate::class);
+Route::resource('product_cats', ProductCategoryController::class)->middleware(Authenticate::class);
 
 // Profile/user
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(Authenticate::class);
