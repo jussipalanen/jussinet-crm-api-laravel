@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')->withSucces('Signed in');
         }
-        return redirect("login")->withSuccess('The login details are not valid. Please try again.');
+        return redirect()->back()->withErrors('The login details are not valid. Please try again.');
     }
 
     /**

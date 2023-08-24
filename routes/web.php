@@ -45,6 +45,9 @@ Route::resource('product_cats', ProductCategoryController::class)->middleware(Au
 // Profile/user
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(Authenticate::class);
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->middleware(Authenticate::class);
+Route::post('/profile/edit', [ProfileController::class, 'update'])->middleware(Authenticate::class);
+Route::get('/profile/change_password', [ProfileController::class, 'get_change_password'])->middleware(Authenticate::class);
+Route::post('/profile/change_password', [ProfileController::class, 'post_change_password'])->middleware(Authenticate::class);
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('auth.getlogin');

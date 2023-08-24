@@ -9,6 +9,14 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('auth.dologin') }}">
                             @csrf
+                        
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <div>{{ $error }}</div>
+                                    @endforeach
+                                </div>
+                            @endif
 
                             <div class="row mb-3">
                                 <label for="email"

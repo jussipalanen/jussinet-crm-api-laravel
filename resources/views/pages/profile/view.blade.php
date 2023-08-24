@@ -1,7 +1,10 @@
 @extends('layout.dashboard')
 @section('content')
-    View profile
-    <a href="{{ url('/profile/edit') }}">
-        Edit
-    </a>
+    <h2>View profile</h2>
+    <h3>{{ ($user->firstname ?: 'null') . ' ' . ($user->lastname ?: 'null') }}</h3>
+    <p>
+        <a href="{{ url('profile/edit')}} ">
+            Edit profile
+        </a>
+    </p>
 @endsection

@@ -68,7 +68,7 @@
     </table>
 
     <div class="d-flex">
-        {!! $products->links() !!}
+        {!! $products->appends(request()->input())->links() !!}
     </div>
 
     <div class="d-flex">

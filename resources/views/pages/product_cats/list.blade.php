@@ -35,7 +35,7 @@
     </table>
 
     <div class="d-flex">
-        {!! $product_categories->links() !!}
+        {!! $product_categories->appends(request()->input())->links() !!}
     </div>
 
     <div class="d-flex">
