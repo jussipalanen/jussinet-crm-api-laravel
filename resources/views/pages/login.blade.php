@@ -1,6 +1,12 @@
 @extends('layout.master')
 @section('content')
-    <div class="container">
+    <div class="container login">
+        <div class="row pt-3 justify-content-center text-center">
+            <div class="col-md-8">
+                <h1>JussiNet</h1>
+                <p>The simplest CRM system.</p>
+            </div>
+        </div>
         <div class="row pt-3 justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -17,6 +23,14 @@
                                     @endforeach
                                 </div>
                             @endif
+
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <p>
+                                        Please enter your email and password to log in.
+                                    </p>
+                                </div>
+                            </div>
 
                             <div class="row mb-3">
                                 <label for="email"
@@ -79,6 +93,10 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        Jussi Alanen | Laravel Project | {{ date('Y') }}
                     </div>
                 </div>
             </div>
