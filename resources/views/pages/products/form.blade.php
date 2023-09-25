@@ -35,7 +35,9 @@
             <select class="form-control" name="product_category_id" id="product_category_id">
                 <option value="">Select</option>
                 @foreach ($product_categories as $product_category)
-                    <option value="{{ $product_category->id }}" {{ isset( $product->product_category_id ) && $product->product_category_id == $product_category->id ? 'selected' : '' }}>{{ $product_category->name }}</option>
+                    <option value="{{ $product_category->id }}"
+                        {{ isset($product->product_category_id) && $product->product_category_id == $product_category->id ? 'selected' : '' }}>
+                        {{ $product_category->name }}</option>
                 @endforeach
             </select>
             @error('product_category')
@@ -117,4 +119,13 @@
             <button type="reset" name="reset" class="btn btn-primary">Reset</button>
         </div>
     </form>
+
+    @php
+        $options = [
+            [
+                'selector' => 'textarea#description',
+            ],
+        ];
+    @endphp
+    @include('scripts.tinymce', [$options])
 @endsection

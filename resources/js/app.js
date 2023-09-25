@@ -1,6 +1,3 @@
-import './bootstrap';
-
-import jQuery from 'jquery';
-window.$ = jQuery;
-
-import '../sass/app.scss'
+// window.Popper = require('popperjs');
+window.$ = require('jquery');
+require('bootstrap');

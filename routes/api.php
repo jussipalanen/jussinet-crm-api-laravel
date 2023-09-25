@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\Post;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +47,24 @@ Route::get('/products', function()
         ]);
     });
 })->middleware('auth:sanctum')->name('products');
+
+# Product API
+Route::get('/posts', function()
+{
+    return Post::all()->map(function( $post ){
+        // Get the full url of the feature image
+        $post->featured_image = url('/') . Storage::url( 'app/' . $post->featured_image );
+        return $post;
+    })->transform(function($post)
+    {
+        # Show only the specific fields
+        return $post->only([
+            'id', 
+            'name', 
+            'content',
+            'featured_image',
+            'show'
+        ]);
+    });
+})->middleware('auth:sanctum')->name('products');
+

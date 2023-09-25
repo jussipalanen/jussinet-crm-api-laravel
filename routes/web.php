@@ -57,8 +57,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('auth.dologout')
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->middleware(Authenticate::class);
-Route::get('/posts/create', [PostController::class, 'create'])->middleware(Authenticate::class);
-Route::post('/posts/create', [PostController::class, 'store'])->middleware(Authenticate::class);
+Route::get('/posts/add', [PostController::class, 'create'])->middleware(Authenticate::class);
+Route::post('/posts/add', [PostController::class, 'store'])->middleware(Authenticate::class);
 Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware(Authenticate::class);
 Route::post('/posts/edit/{id}', [PostController::class, 'update'])->middleware(Authenticate::class);
 Route::resource('posts', PostController::class)->middleware(Authenticate::class);

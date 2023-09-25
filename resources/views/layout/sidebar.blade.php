@@ -18,6 +18,30 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ url('/posts') }}" class="nav-link {{ request()->is('posts') ? 'active' : 'text-white' }}">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="{{ url('/posts') }}"></use>
+                    </svg>
+                    Posts
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('/products') }}"
+                    class="nav-link {{ request()->is('products') ? 'active' : 'text-white' }}">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="{{ url('/products') }}"></use>
+                    </svg>
+                    Products
+                </a>
+
+                <ul class="submenu show text-small">
+                    <li class="nav-item"><a
+                            class="nav-link {{ request()->is('product_cats') ? 'active' : 'text-white' }}"
+                            href="{{ url('/product_cats') }}">Categories</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ url('/about') }}" class="nav-link {{ request()->is('about') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="{{ url('/about') }}"></use>
@@ -42,41 +66,6 @@
                     Donate
                 </a>
             </li>
-
-            {{-- <li>
-                <a href="{{ url('/customers') }}"
-                    class="nav-link {{ request()->is('customers') ? 'active' : 'text-white' }}">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="{{ url('/customers') }}"></use>
-                    </svg>
-                    Customers
-                </a>
-            </li> --}}
-            <li class="nav-item">
-                <a href="{{ url('/posts') }}"
-                    class="nav-link {{ request()->is('posts') ? 'active' : 'text-white' }}">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="{{ url('/posts') }}"></use>
-                    </svg>
-                    Posts
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ url('/products') }}"
-                    class="nav-link {{ request()->is('products') ? 'active' : 'text-white' }}">
-                    <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="{{ url('/products') }}"></use>
-                    </svg>
-                    Products
-                </a>
-
-                <ul class="submenu show text-small">
-                    <li class="nav-item"><a class="nav-link {{ request()->is('product_cats') ? 'active' : 'text-white' }}" href="{{ url('/product_cats') }}">Categories</a></li>
-                </ul>
-
-            </li>
-
-            
         </ul>
         <hr>
         <div class="dropdown">

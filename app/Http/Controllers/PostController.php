@@ -38,9 +38,9 @@ class PostController extends Controller
     public function create()
     {
         return view('pages.posts.form', [
-            'form_title' => 'Create post',
+            'form_title' => 'Add post',
             'mode' => 'create',
-            'url' => url('/posts/create'),
+            'url' => url('/posts/add'),
         ]);
     }
 
@@ -66,8 +66,8 @@ class PostController extends Controller
             'show' => (bool) $request->show !== false ? true : false,
         ]);
 
-        return redirect('/posts/create')->with([
-            'success' => 'Post has been created successfully into the database.',
+        return redirect('/posts/add')->with([
+            'success' => 'Post has been added successfully into the database.',
         ]);
     }
 
