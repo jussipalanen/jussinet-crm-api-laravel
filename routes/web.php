@@ -3,6 +3,7 @@
 // use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -53,3 +54,11 @@ Route::post('/profile/change_password', [ProfileController::class, 'post_change_
 Route::get('/login', [LoginController::class, 'index'])->name('auth.getlogin');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('auth.dologin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.dologout');
+
+// Posts
+Route::get('/posts', [PostController::class, 'index'])->middleware(Authenticate::class);
+Route::get('/posts/create', [PostController::class, 'create'])->middleware(Authenticate::class);
+Route::post('/posts/create', [PostController::class, 'store'])->middleware(Authenticate::class);
+Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware(Authenticate::class);
+Route::post('/posts/edit/{id}', [PostController::class, 'update'])->middleware(Authenticate::class);
+Route::resource('posts', PostController::class)->middleware(Authenticate::class);

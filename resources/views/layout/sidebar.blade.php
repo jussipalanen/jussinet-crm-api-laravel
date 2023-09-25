@@ -53,6 +53,15 @@
                 </a>
             </li> --}}
             <li class="nav-item">
+                <a href="{{ url('/posts') }}"
+                    class="nav-link {{ request()->is('posts') ? 'active' : 'text-white' }}">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="{{ url('/posts') }}"></use>
+                    </svg>
+                    Posts
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ url('/products') }}"
                     class="nav-link {{ request()->is('products') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
