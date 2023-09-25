@@ -16,7 +16,7 @@
             @foreach ($product_categories as $product_category)
                 <tr>
                     <td scope="row">
-                        <input type="checkbox" name="product[$product_category->id]" id="product-{{ $product_category->id }}" value="{{ $product_category->id }}">
+                        <input type="checkbox" name="product[$product_category->id]" id="product-{{ $product_category->id }}" class="table-item-checkbox" value="{{ $product_category->id }}">
                     </td>
                     <td scope="row">{{ $product_category->name }} </td>
                     <td>{{ $product_category->description }} </td>

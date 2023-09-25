@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -26,7 +27,8 @@ class User extends Authenticatable
         'address',
         'city',
         'country',
-        'phone'
+        'phone',
+        'person_image',
     ];
 
     /**
@@ -48,4 +50,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /**
+     * Get the person image from the storage directory
+     *
+     * @return void
+     */
+    public function getPersonImage()
+    {
+        return Storage::url('app/' . $this->person_image) ?: null;
+    }
+
+   /**
+     * This checks, if the person image exists in the storage directory
+     *
+     * @return void
+     */
+    public function hasPersonImage()
+    {
+        return file_exists( Storage::path($this->person_image) ) ? true : false;
+    }
+
 }

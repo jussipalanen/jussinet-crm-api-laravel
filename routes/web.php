@@ -2,7 +2,7 @@
 
 // use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;

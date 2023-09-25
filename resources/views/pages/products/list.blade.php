@@ -44,7 +44,7 @@
             @foreach ($products as $product)
                 <tr>
                     <td scope="row">
-                        <input type="checkbox" name="product[$product->id]" id="product-{{ $product->id }}" value="{{ $product->id }}">
+                        <input type="checkbox" name="product[$product->id]" id="product-{{ $product->id }}" class="table-item-checkbox" value="{{ $product->id }}">
                     </td>
                     <td scope="row">{{ $product->name }} </td>
                     <td><img class="img-thumbnail rounded product-featured-image" src="{{ Storage::url( 'app/' . $product->featured_image) }}"> </td>

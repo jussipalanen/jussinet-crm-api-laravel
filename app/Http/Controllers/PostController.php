@@ -22,8 +22,10 @@ class PostController extends Controller
         $posts = Post::paginate($limit);
         if( isset($_GET['s']) && $_GET['s'] )
         {
-            $search = trim($_GET['s']);
-            $posts = Post::where('name', 'LIKE', '%' . $search . '%')->paginate($limit);
+            $search = trim(strip_tags($_GET['s']));
+            $posts = Post::where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('content', 'LIKE', '%' . $search . '%')
+            ->paginate($limit);
         }
         return view('pages.posts.list', [
             'posts' => $posts,

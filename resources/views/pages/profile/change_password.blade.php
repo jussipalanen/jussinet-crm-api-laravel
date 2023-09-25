@@ -19,6 +19,16 @@
         @endif
 
         <div class="mb-3">
+            <label for="current_password" class="form-label">Your current password</label>
+            <input type="password" name="current_password" id="current_password" class="form-control" value="">
+            @error('current_password')
+                <span class="invalid-feedback d-block" role="alert">
+                    {{ $message }}
+                </span>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="password" class="form-label">New password</label>
             <input type="password" name="password" id="password" class="form-control" value="">
             @error('password')
@@ -29,7 +39,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="repassword" class="form-label">New password</label>
+            <label for="repassword" class="form-label">Re-new password</label>
             <input type="password" name="repassword" id="repassword" class="form-control" value="">
             @error('repassword')
                 <span class="invalid-feedback d-block" role="alert">

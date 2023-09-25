@@ -40,11 +40,11 @@
             @foreach ($posts as $post)
                 <tr>
                     <td scope="row">
-                        <input type="checkbox" name="post[$post->id]" id="product-{{ $post->id }}" value="{{ $post->id }}">
+                        <input type="checkbox" name="post[$post->id]" id="product-{{ $post->id }}" class="table-item-checkbox" value="{{ $post->id }}">
                     </td>
                     <td scope="row">{{ $post->name }} </td>
                     <td><img class="img-thumbnail rounded product-featured-image" src="{{ Storage::url( 'app/' . $post->featured_image) }}"> </td>
-                    <td>{{ $post->content }} </td>
+                    <td>{{ strip_tags($post->content) }} </td>
                     <td>
                         <a class="btn btn-primary" href="{{ url("/posts/edit/{$post->id}") }}">Edit</a>
 

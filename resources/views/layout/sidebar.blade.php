@@ -50,9 +50,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/api/documentation') }}" class="nav-link {{ request()->is('docs') ? 'active' : 'text-white' }}">
+                <a href="{{ url('/docs/api') }}" class="nav-link {{ request()->is('docs/api') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="{{ url('/api/documentation') }}"></use>
+                        <use xlink:href="{{ url('/docs/api') }}"></use>
                     </svg>
                     Documentations
                 </a>
@@ -71,7 +71,7 @@
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/PLACEHOLDER.png" alt="" width="32" height="32"
+                <img src="{{ Auth::user()->getPersonImage() }}" alt="" width="32" height="32"
                     class="rounded-circle me-2">
                 <strong>{{ Auth::user()->name }}</strong>
             </a>

@@ -19,7 +19,8 @@ class ProfileController extends Controller
     private $validation = [
         'firstname' => ['required', 'max:255'],
         'lastname' => ['required', 'max:255'],
-        'phone' => ['regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10']
+        'phone' => ['regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
+        'person_image' => ['nullable', 'max:2000', 'mimes:jpeg,jpg,png,gif'],
     ];
 
     /**
@@ -94,12 +95,22 @@ class ProfileController extends Controller
     public function post_change_password(Request $request)
     {
         $request->validate([
+            'current_password' => ['required:true'],
             'password' => ['required:true', 'min:6', 'max:30'],
             'repassword' => ['required:true', 'min:6', 'max:30', 'same:password', 'required_with:password'],
         ]);
 
 
         $user = Auth::user();
+        $hasher = app('hash');
+        if( !$hasher->check($request->current_password, $user->password) )
+        {
+            return redirect()->back()->withErrors([
+                'error' => 'Your current password is wrong.',
+            ]);
+        }
+    
+
         $user->forceFill([
             'password' => Hash::make($request->password)
         ])->setRememberToken(Str::random(60));
@@ -128,13 +139,21 @@ class ProfileController extends Controller
         # Check validation, or return the error messages
         $request->validate($this->validation);
 
+        # Move the featured image to public resource directory
+        $person_image = isset( $request->uploaded_person_image ) ? $request->uploaded_person_image : null;
+        if( $request->file('person_image') )
+        {
+            $person_image = $request->file('person_image')->storePublicly('profiles/user_' . $user->id . '/') ?: null;
+        }
+
         $user->update([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'address' => $request->address,
-            'city' => $request->city,
-            'country' => $request->country,
-            'phone' => $request->phone,
+            'firstname' => $request->firstname ?: null,
+            'lastname' => $request->lastname ?: null,
+            'address' => $request->address ?: null,
+            'city' => $request->city ?: null,
+            'country' => $request->country ?: null,
+            'phone' => $request->phone ?: null,
+            'person_image' => $person_image ?: null,
         ]);
 
         $url = url('/profile/edit');

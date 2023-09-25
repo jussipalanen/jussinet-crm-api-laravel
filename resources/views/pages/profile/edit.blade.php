@@ -8,8 +8,30 @@
                 {{ session()->get('errors') }}
             </div>
         @endif
-
         @csrf
+
+        <div class="mb-3">
+            <label for="person_image" class="form-label">Person image</label>
+            <input type="file" name="person_image" id="person_image" class="form-control">
+            @if (isset($user->person_image))
+                <input type="hidden" name="uploaded_person_image" value="{{ $user->person_image }}">
+            @endif
+            @error('person_image')
+                <span class="invalid-feedback d-block" role="alert">
+                    {{ $message }}
+                </span>
+            @enderror
+        </div>
+
+
+        <div class="mb-3">
+            <p>Preview image:</p>
+            @if (isset($user->person_image))
+                <img class="img-thumbnail rounded person-image-edit"
+                    src="{{ Storage::url('app/' . $user->person_image) }}">
+            @endif
+        </div>
+
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name" class="form-control" value="{{ $user->name ?? '' }}" disabled>
@@ -93,13 +115,9 @@
         </div>
 
         <div class="mb-3">
-            <a href="{{ url('profile/change_password') }}">Change password</a>
-        </div>
-
-        
-        <div class="mb-3">
             <button type="submit" name="submit"
                 class="btn btn-primary">Update</button>
+            <a class="btn btn-primary" href="{{ url('profile/change_password') }}">Change password</a>
         </div>
     </form>
 @endsection

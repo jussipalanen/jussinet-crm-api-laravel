@@ -25,8 +25,10 @@ class ProductController extends Controller
         $products = Product::paginate($limit);
         if( isset($_GET['s']) && $_GET['s'] )
         {
-            $search = trim($_GET['s']);
-            $products = Product::where('name', 'LIKE', '%' . $search . '%')->paginate($limit);
+            $search = trim(strip_tags($_GET['s']));
+            $products = Product::where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('description', 'LIKE', '%' . $search . '%')
+            ->paginate($limit);
         }
         return view('pages.products.list', [
             'products' => $products,
