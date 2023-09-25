@@ -50,9 +50,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/docs') }}" class="nav-link {{ request()->is('docs') ? 'active' : 'text-white' }}">
+                <a href="{{ url('/api/documentation') }}" class="nav-link {{ request()->is('docs') ? 'active' : 'text-white' }}">
                     <svg class="bi me-2" width="16" height="16">
-                        <use xlink:href="{{ url('/docs') }}"></use>
+                        <use xlink:href="{{ url('/api/documentation') }}"></use>
                     </svg>
                     Documentations
                 </a>
